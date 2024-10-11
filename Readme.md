@@ -2,8 +2,9 @@
 
 - add tabs showing buffers
 - add keyboard visual map
-- add stay centered
 - add emmet
+- add nvim-surround
+- decide what I want to do with terminal
 
 - figure out spell check.
 - figure out why cursor disapears.

@@ -1,3 +1,4 @@
+vim.g.python3_host_prog = "~/.pyenv/versions/3.12.5/envs/neovim/bin/python"
 vim.g.mapleader = " "
 
 vim.opt.encoding = "utf-8"

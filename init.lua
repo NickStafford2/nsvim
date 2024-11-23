@@ -10,3 +10,4 @@ vim.print = _G.dd
 require("config.lazy")
 require("polish")
 require("lspconfig").glsl_analyzer.setup({})
+-- require("lspconfig").clangd.setup({})

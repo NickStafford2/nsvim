@@ -132,6 +132,26 @@ return {
 						},
 					},
 				},
+				clangd = {
+					-- This tells LSP to use the clangd server
+					cmd = { "clangd", "--background-index" },
+					root_dir = function(fname)
+						return require("lspconfig.util").root_pattern("compile_commands.json", "CMakeLists.txt", ".git")(
+							fname
+						) or vim.loop.cwd()
+					end,
+					settings = {
+						clangd = {
+							-- Example of specific clangd settings, you can customize this
+							fallbackFlags = {
+								"-std=c++11",
+								"-Wall",
+								"-Wextra",
+								"-stdlib=libstdc++",
+							},
+						},
+					},
+				},
 			},
 			setup = {},
 		},

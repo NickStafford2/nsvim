@@ -25,35 +25,51 @@ require("lazy").setup({
 				},
 			},
 		},
-		-- import any extras modules here
+		-- Linting
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
+		-- formatting
+		{ import = "lazyvim.plugins.extras.formatting.black" },
+		-- Languages
 		-- { import = "lazyvim.plugins.extras.formatting.prettier" },
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
-		{ import = "lazyvim.plugins.extras.util.dot" },
-		{ import = "lazyvim.plugins.extras.coding.mini-surround" },
-		{ import = "lazyvim.plugins.extras.ui.mini-animate" },
-		{ import = "lazyvim.plugins.extras.coding.neogen" },
-		{ import = "lazyvim.plugins.extras.ui.dashboard-nvim" },
+		{ import = "lazyvim.plugins.extras.lang.rust" },
+		{ import = "lazyvim.plugins.extras.lang.toml" },
+		{ import = "lazyvim.plugins.extras.lang.tailwind" },
+		{ import = "lazyvim.plugins.extras.lang.git" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
-		{ import = "lazyvim.plugins.extras.formatting.black" },
-		{ import = "lazyvim.plugins.extras.editor.refactoring" },
-		{ import = "lazyvim.plugins.extras.lsp.none-ls" },
-		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
 		-- { import = "lazyvim.plugins.extras.lang.markdown" },
-		{ import = "lazyvim.plugins.extras.lang.rust" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
-		-- { import = "lazyvim.plugins.extras.coding.copilot" },
-		{ import = "lazyvim.plugins.extras.dap.core" },
-		{ import = "lazyvim.plugins.extras.lang.git" },
-		{ import = "lazyvim.plugins.extras.lang.toml" },
-		-- { import = "lazyvim.plugins.extras.vscode" },
-		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
-		-- { import = "lazyvim.plugins.extras.test.core" },
+
+		-- UI/UX
+		{ import = "lazyvim.plugins.extras.ui.mini-animate" },
+		{ import = "lazyvim.plugins.extras.ui.dashboard-nvim" },
+
+		-- Coding
+		{ import = "lazyvim.plugins.extras.coding.mini-surround" },
+		{ import = "lazyvim.plugins.extras.coding.neogen" },
 		{ import = "lazyvim.plugins.extras.coding.yanky" },
+		-- { import = "lazyvim.plugins.extras.coding.copilot" },
+
+		-- Editor
+		{ import = "lazyvim.plugins.extras.editor.refactoring" },
+		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.editor.dial" },
 		-- { import = "lazyvim.plugins.extras.editor.mini-files" },
+
+		-- LSP and DAP
+		{ import = "lazyvim.plugins.extras.lsp.none-ls" },
+		{ import = "lazyvim.plugins.extras.dap.core" },
+
+		-- Utilities
+		{ import = "lazyvim.plugins.extras.util.dot" },
+		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		-- { import = "lazyvim.plugins.extras.util.project" },
+
+		-- Other
+		-- { import = "lazyvim.plugins.extras.test.core" },
+		-- { import = "lazyvim.plugins.extras.vscode" },
+
+		-- Non LazyExtras
 		{ import = "plugins" },
 	},
 	defaults = {

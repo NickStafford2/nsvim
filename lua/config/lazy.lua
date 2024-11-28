@@ -62,6 +62,7 @@ require("lazy").setup({
 
 		-- Utilities
 		{ import = "lazyvim.plugins.extras.util.dot" },
+		{ import = "lazyvim.plugins.extras.editor.telescope" },
 		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		-- { import = "lazyvim.plugins.extras.util.project" },
 

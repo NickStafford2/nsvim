@@ -27,6 +27,7 @@ keymap.set("n", "-", "<C-x>")
 -- keymap.set("n", "dw", 'vb"_d') -- why would anyone do this?
 
 -- Select all
+vim.keymap.set("n", "<Leader>a", "ggVG", { noremap = true, silent = true })
 -- keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Save with root permission (not working for now)

@@ -43,6 +43,7 @@ require("lazy").setup({
 		-- UI/UX
 		{ import = "lazyvim.plugins.extras.ui.mini-animate" },
 		{ import = "lazyvim.plugins.extras.ui.dashboard-nvim" },
+		{ import = "lazyvim.plugins.extras.ui.mini-indentscope" },
 
 		-- Coding
 		{ import = "lazyvim.plugins.extras.coding.mini-surround" },

@@ -27,10 +27,13 @@ require("lazy").setup({
 		},
 		-- Linting
 		{ import = "lazyvim.plugins.extras.linting.eslint" },
-		-- formatting
+
+		-- Formatting
 		{ import = "lazyvim.plugins.extras.formatting.black" },
-		-- Languages
+		{ import = "lazyvim.plugins.extras.formatting.biome" },
 		-- { import = "lazyvim.plugins.extras.formatting.prettier" },
+
+		-- Languages
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.toml" },

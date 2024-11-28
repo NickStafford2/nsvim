@@ -55,6 +55,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.editor.refactoring" },
 		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.editor.dial" },
+		{ import = "lazyvim.plugins.extras.editor.navic" },
 		-- { import = "lazyvim.plugins.extras.editor.mini-files" },
 
 		-- LSP and DAP

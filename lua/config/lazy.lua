@@ -48,6 +48,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.ui.dashboard-nvim" },
 		{ import = "lazyvim.plugins.extras.ui.mini-indentscope" },
 		{ import = "lazyvim.plugins.extras.ui.treesitter-context" },
+		{ import = "lazyvim.plugins.extras.ui.edgy" },
 
 		-- Coding
 		{ import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -56,6 +57,7 @@ require("lazy").setup({
 		-- { import = "lazyvim.plugins.extras.coding.copilot" },
 
 		-- Editor
+		{ import = "lazyvim.plugins.extras.editor.outline" },
 		{ import = "lazyvim.plugins.extras.editor.refactoring" },
 		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.editor.dial" },

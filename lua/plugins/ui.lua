@@ -53,13 +53,6 @@ return {
 		end,
 	},
 
-	{
-		"rcarriga/nvim-notify",
-		opts = {
-			timeout = 5000,
-		},
-	},
-
 	-- animations
 	{
 		"echasnovski/mini.animate",
@@ -69,24 +62,6 @@ return {
 				enable = false,
 			}
 		end,
-	},
-
-	-- buffer line
-	{
-		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
-		keys = {
-			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-		},
-		opts = {
-			options = {
-				mode = "tabs",
-				-- separator_style = "slant",
-				show_buffer_close_icons = false,
-				show_close_icon = false,
-			},
-		},
 	},
 
 	-- filename
@@ -155,9 +130,11 @@ return {
 
 	{
 		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
+		lazy = false, -- Ensure dashboard is not lazy-loaded
 		opts = function(_, opts)
-			local logo = [[
+			-- Your custom logo
+			local custom_logo = [[
+
       ___           ___           ___                       ___     
      /\__\         /\  \         /\__\          ___        /\__\    
     /::|  |       /::\  \       /:/  /         /\  \      /::|  |   
@@ -169,10 +146,16 @@ return {
      |::/  /     \:\/:/  /     \::::/__/    \:\__\          /:/  /  
      /:/  /       \::/  /       ~~~~         \/__/         /:/  /   
      \/__/         \/__/                                   \/__/    
-      ]]
+      
+    ]]
 
-			logo = string.rep("\n", 8) .. logo .. "\n\n"
-			opts.config.header = vim.split(logo, "\n")
+			-- Ensure the logo has proper newlines for formatting
+			custom_logo = string.rep("\n", 8) .. custom_logo .. "\n\n"
+
+			-- Override only the header (logo) part
+			opts.config.header = vim.split(custom_logo, "\n")
+
+			return opts
 		end,
 	},
 }

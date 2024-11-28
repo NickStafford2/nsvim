@@ -1,3 +1,4 @@
+vim.g.python3_host_prog = "~/.pyenv/versions/3.12.5/envs/neovim/bin/python"
 vim.g.mapleader = " "
 
 vim.opt.encoding = "utf-8"
@@ -46,3 +47,5 @@ vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 if vim.fn.has("nvim-0.8") == 1 then
 	vim.opt.cmdheight = 0
 end
+
+vim.g.lazyvim_python_lsp = "basedpyright"

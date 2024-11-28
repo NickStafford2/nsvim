@@ -12,6 +12,10 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+				-- "basedpyright", -- basedpyright for Python LSP
+				-- "ruff", -- ruff for linting
+				-- "black", -- black for auto-formatting
+				-- "isort", -- isort for sorting imports
 			})
 		end,
 	},
@@ -29,36 +33,36 @@ return {
 						return require("lspconfig.util").root_pattern(".git")(...)
 					end,
 				},
-				tsserver = {
-					root_dir = function(...)
-						return require("lspconfig.util").root_pattern(".git")(...)
-					end,
-					single_file_support = false,
-					settings = {
-						typescript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "literal",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = false,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-						javascript = {
-							inlayHints = {
-								includeInlayParameterNameHints = "all",
-								includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-								includeInlayFunctionParameterTypeHints = true,
-								includeInlayVariableTypeHints = true,
-								includeInlayPropertyDeclarationTypeHints = true,
-								includeInlayFunctionLikeReturnTypeHints = true,
-								includeInlayEnumMemberValueHints = true,
-							},
-						},
-					},
-				},
+				-- tsserver = {
+				-- 	root_dir = function(...)
+				-- 		return require("lspconfig.util").root_pattern(".git")(...)
+				-- 	end,
+				-- 	single_file_support = false,
+				-- 	settings = {
+				-- 		typescript = {
+				-- 			inlayHints = {
+				-- 				includeInlayParameterNameHints = "literal",
+				-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				-- 				includeInlayFunctionParameterTypeHints = true,
+				-- 				includeInlayVariableTypeHints = false,
+				-- 				includeInlayPropertyDeclarationTypeHints = true,
+				-- 				includeInlayFunctionLikeReturnTypeHints = true,
+				-- 				includeInlayEnumMemberValueHints = true,
+				-- 			},
+				-- 		},
+				-- 		javascript = {
+				-- 			inlayHints = {
+				-- 				includeInlayParameterNameHints = "all",
+				-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+				-- 				includeInlayFunctionParameterTypeHints = true,
+				-- 				includeInlayVariableTypeHints = true,
+				-- 				includeInlayPropertyDeclarationTypeHints = true,
+				-- 				includeInlayFunctionLikeReturnTypeHints = true,
+				-- 				includeInlayEnumMemberValueHints = true,
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 				html = {},
 				yamlls = {
 					settings = {
@@ -132,6 +136,26 @@ return {
 						},
 					},
 				},
+				-- clangd = {
+				-- 	-- This tells LSP to use the clangd server
+				-- 	cmd = { "clangd", "--background-index" },
+				-- 	root_dir = function(fname)
+				-- 		return require("lspconfig.util").root_pattern("compile_commands.json", "CMakeLists.txt", ".git")(
+				-- 			fname
+				-- 		) or vim.loop.cwd()
+				-- 	end,
+				-- 	settings = {
+				-- 		clangd = {
+				-- 			-- Example of specific clangd settings, you can customize this
+				-- 			fallbackFlags = {
+				-- 				"-std=c++11",
+				-- 				"-Wall",
+				-- 				"-Wextra",
+				-- 				"-stdlib=libstdc++",
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 			},
 			setup = {},
 		},

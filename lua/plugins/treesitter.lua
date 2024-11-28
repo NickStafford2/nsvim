@@ -6,14 +6,17 @@ return {
 		opts = {
 			ensure_installed = {
 				"astro",
-				"cmake",
-				"cpp",
+				-- "c",
+				-- "cpp",
+				-- "cmake",
+				-- "clangd",
 				"css",
 				"fish",
 				"gitignore",
 				"go",
 				"graphql",
 				"http",
+				"python",
 				"java",
 				"php",
 				"rust",
@@ -21,7 +24,9 @@ return {
 				"sql",
 				"svelte",
 			},
-
+			highlight = {
+				enable = true,
+			},
 			-- matchup = {
 			-- 	enable = true,
 			-- },

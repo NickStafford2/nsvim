@@ -61,7 +61,7 @@ require("lazy").setup({
 		-- Editor
 		{ import = "lazyvim.plugins.extras.editor.outline" },
 		{ import = "lazyvim.plugins.extras.editor.refactoring" },
-		{ import = "lazyvim.plugins.extras.editor.inc-rename" },
+		-- { import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.editor.dial" },
 		{ import = "lazyvim.plugins.extras.editor.navic" },
 		-- { import = "lazyvim.plugins.extras.editor.mini-files" },
@@ -77,7 +77,7 @@ require("lazy").setup({
 		-- { import = "lazyvim.plugins.extras.util.project" },
 
 		-- Other
-		{ import = "lazyvim.plugins.extras.test.core" },
+		-- { import = "lazyvim.plugins.extras.test.core" },
 		-- { import = "lazyvim.plugins.extras.vscode" },
 
 		-- Non LazyExtras

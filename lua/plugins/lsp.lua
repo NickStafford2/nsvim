@@ -12,10 +12,10 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
-				-- "basedpyright", -- basedpyright for Python LSP
-				-- "ruff", -- ruff for linting
-				-- "black", -- black for auto-formatting
-				-- "isort", -- isort for sorting imports
+				"basedpyright", -- basedpyright for Python LSP
+				"ruff", -- ruff for linting
+				"black", -- black for auto-formatting
+				"isort", -- isort for sorting imports
 			})
 		end,
 	},

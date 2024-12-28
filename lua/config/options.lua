@@ -49,5 +49,6 @@ if vim.fn.has("nvim-0.8") == 1 then
 end
 
 -- vim.lsp.set_log_level("debug")
-vim.g.lazyvim_python_lsp = "basedpyright"
+-- vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_lsp = "pyright"
 vim.g.lazyvim_python_ruff = "ruff"

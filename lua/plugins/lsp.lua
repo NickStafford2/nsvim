@@ -12,6 +12,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+				"pyright", -- pyright for Python LSP
 				"basedpyright", -- basedpyright for Python LSP
 				"ruff", -- ruff for linting
 				"black", -- black for auto-formatting

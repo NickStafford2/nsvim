@@ -60,6 +60,7 @@ require("lazy").setup({
 
 		-- Editor
 		{ import = "lazyvim.plugins.extras.editor.outline" },
+		{ import = "lazyvim.plugins.extras.editor.fzf" },
 		{ import = "lazyvim.plugins.extras.editor.refactoring" },
 		-- { import = "lazyvim.plugins.extras.editor.inc-rename" },
 		{ import = "lazyvim.plugins.extras.editor.dial" },

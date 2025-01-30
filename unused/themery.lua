@@ -1,5 +1,7 @@
+if true then
+	return {}
+end
 return {
-
 	"zaldih/themery.nvim",
 	lazy = false,
 	config = function()

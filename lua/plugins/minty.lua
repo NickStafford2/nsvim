@@ -1,3 +1,6 @@
+if true then
+	return {}
+end
 -- i don't know why i put each keys inside of these blocks instead of calling keymaps
 -- I don't know what is best yet. or how to config nvim properly. this version works
 --

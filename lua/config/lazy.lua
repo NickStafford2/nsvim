@@ -31,7 +31,7 @@ require("lazy").setup({
 		-- Formatting
 		{ import = "lazyvim.plugins.extras.formatting.black" },
 		{ import = "lazyvim.plugins.extras.formatting.biome" },
-		-- { import = "lazyvim.plugins.extras.formatting.prettier" },
+		{ import = "lazyvim.plugins.extras.formatting.prettier" },
 
 		-- Languages
 		{ import = "lazyvim.plugins.extras.lang.typescript" },
@@ -41,6 +41,7 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lang.git" },
 		{ import = "lazyvim.plugins.extras.lang.json" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
+		{ import = "lazyvim.plugins.extras.lang.docker" },
 		-- { import = "lazyvim.plugins.extras.lang.markdown" },
 
 		-- UI/UX
@@ -73,7 +74,7 @@ require("lazy").setup({
 
 		-- Utilities
 		{ import = "lazyvim.plugins.extras.util.dot" },
-		-- { import = "lazyvim.plugins.extras.editor.telescope" },
+		{ import = "lazyvim.plugins.extras.editor.telescope" },
 		{ import = "lazyvim.plugins.extras.util.mini-hipatterns" },
 		-- { import = "lazyvim.plugins.extras.util.project" },
 

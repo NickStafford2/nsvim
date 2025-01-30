@@ -1,7 +1,6 @@
-return {
 
 	-- Go forward/backward with square brackets
-	{
+	return {
 		"echasnovski/mini.bracketed",
 		event = "BufReadPost",
 		config = function()
@@ -15,13 +14,3 @@ return {
 			})
 		end,
 	},
-
-	{
-		"simrat39/symbols-outline.nvim",
-		keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
-		cmd = "SymbolsOutline",
-		opts = {
-			position = "right",
-		},
-	},
-}

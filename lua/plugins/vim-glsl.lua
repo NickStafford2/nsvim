@@ -1,4 +1,3 @@
 return {
-
 	"tikhomirov/vim-glsl",
 }

@@ -4,22 +4,31 @@ local M = {}
 local harpoon = require("harpoon")
 local buf
 
+-- Find the window currently displaying the sidebar buffer
+local function find_sidebar_win()
+	for _, w in ipairs(vim.api.nvim_list_wins()) do
+		local b = vim.api.nvim_win_get_buf(w)
+		if b == buf then
+			return w
+		end
+	end
+	return nil
+end
+
+-- Resize the sidebar to match number of Harpoon items
 local function resize_sidebar()
-	-- must be in the correct window
-	local win = vim.api.nvim_get_current_win()
+	local win = find_sidebar_win()
 	if not win then
 		return
 	end
 
-	local harpoon = require("harpoon")
 	local count = #harpoon:list().items
-
-	-- Minimum height = 1, maximum = something reasonable (like 20)
 	local height = math.max(1, math.min(count, 20))
 
 	vim.api.nvim_win_set_height(win, height)
 end
 
+-- Render the sidebar buffer
 local function render()
 	if not buf or not vim.api.nvim_buf_is_valid(buf) then
 		return
@@ -40,6 +49,7 @@ end
 
 M.render = render
 
+-- Open sidebar buffer (called by neotree_harpoon.lua)
 function M.open()
 	if not buf or not vim.api.nvim_buf_is_valid(buf) then
 		buf = vim.api.nvim_create_buf(false, false)
@@ -50,8 +60,7 @@ function M.open()
 		vim.bo[buf].modifiable = false
 		vim.bo[buf].readonly = true
 
-		-- No keymaps that manipulate Harpoon or open files.
-		-- Optional: manual refresh
+		-- Manual refresh under <leader>hr
 		vim.keymap.set("n", "<leader>hr", function()
 			render()
 		end, { buffer = buf, desc = "Refresh Harpoon sidebar", silent = true })
@@ -62,7 +71,29 @@ function M.open()
 	resize_sidebar()
 end
 
--- Auto-refresh whenever you enter the harpoon sidebar window
+-- Ensure the sidebar updates when Harpoon list changes
+local list = harpoon:list()
+
+local orig_add = list.add
+local orig_remove_at = list.remove_at
+
+function list:add(...)
+	orig_add(self, ...)
+	if buf and vim.api.nvim_buf_is_valid(buf) then
+		render()
+		resize_sidebar()
+	end
+end
+
+function list:remove_at(...)
+	orig_remove_at(self, ...)
+	if buf and vim.api.nvim_buf_is_valid(buf) then
+		render()
+		resize_sidebar()
+	end
+end
+
+-- Auto-refresh when entering the sidebar window
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function(args)
 		if buf and vim.api.nvim_buf_is_valid(buf) and args.buf == buf then

@@ -20,8 +20,6 @@ echo "" >>"$OUTPUT"
 echo "=== Directory Tree ===" >>"$OUTPUT"
 IGNORES=$(git ls-files --others --exclude-standard --directory | sed 's|/$|/*|')
 
-echo "=== Directory Tree ===" >>"$OUTPUT"
-
 # Build exclusion args for tree
 EXCLUDE_ARGS=()
 for p in $IGNORES; do

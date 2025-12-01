@@ -34,3 +34,6 @@ opt.formatoptions:append("r")
 
 -- Disable mouse if desired (LazyVim enables it by default)
 opt.mouse = ""
+
+vim.opt.smoothscroll = false
+vim.g.minianimate_disable = true

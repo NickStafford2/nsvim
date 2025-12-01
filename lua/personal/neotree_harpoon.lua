@@ -32,4 +32,27 @@ function M.open_with_harpoon()
 	require("personal.harpoon_buffer").open()
 end
 
+-- Automatically close Harpoon pane when Neo-tree closes
+vim.api.nvim_create_autocmd("WinClosed", {
+	callback = function(event)
+		-- get the window that closed
+		local closed_win = tonumber(event.match)
+		if not closed_win then
+			return
+		end
+
+		local buf = vim.api.nvim_win_get_buf(closed_win)
+		if vim.bo[buf].filetype ~= "neo-tree" then
+			return -- Not a Neo-tree window, ignore
+		end
+
+		-- Neo-tree closed → close any harpoonlist windows
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			local b = vim.api.nvim_win_get_buf(win)
+			if vim.bo[b].filetype == "harpoonlist" then
+				vim.api.nvim_win_close(win, true)
+			end
+		end
+	end,
+})
 return M

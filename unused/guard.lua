@@ -1,7 +1,3 @@
-if true then
-	return {}
-end
-
 return {
 	"nvimdev/guard.nvim",
 	event = "BufReadPre",

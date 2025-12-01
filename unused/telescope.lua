@@ -1,9 +1,4 @@
-if true then
-	return {}
-end
-
-return 
-{
+return {
 	"telescope.nvim",
 	dependencies = {
 		{

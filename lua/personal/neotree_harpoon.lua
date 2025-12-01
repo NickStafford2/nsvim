@@ -2,7 +2,7 @@
 local M = {}
 
 function M.open_with_harpoon()
-	-- 1. Open Neo-tree
+	-- 1. Open Neo-tree on the left
 	vim.cmd("Neotree toggle left")
 
 	-- 2. Find the Neo-tree window
@@ -22,12 +22,14 @@ function M.open_with_harpoon()
 	-- 3. Focus the Neo-tree window
 	vim.api.nvim_set_current_win(neotree_win)
 
-	-- 4. Split BELOW Neo-tree, set the correct height once
+	-- 4. Create a split BELOW Neo-tree
 	vim.cmd("belowright split")
-	vim.cmd("resize 15") -- final / correct height
 
-	-- 5. Load Harpoon buffer into the new split
-	require("personal.harpoonSidebar").open()
+	-- 5. Correct height of the Harpoon pane
+	vim.cmd("resize 15")
+
+	-- 6. Put your custom Harpoon buffer inside that split
+	require("personal.harpoon_buffer").open()
 end
 
 return M

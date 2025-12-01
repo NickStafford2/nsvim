@@ -5,13 +5,14 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
-keymap.set("n", "<leader>hl", function()
-	require("personal.harpoonSidebar").open()
-end, { desc = "Open Harpoon list buffer" })
+vim.keymap.set("n", "<leader>hl", function()
+	vim.cmd("vsplit | vertical resize 35")
+	require("personal.harpoon_buffer").open()
+end, { desc = "Harpoon list" })
 
 vim.keymap.set("n", "<leader>e", function()
 	require("personal.neotree_harpoon").open_with_harpoon()
-end, { desc = "Neo-tree + Harpoon Pane" })
+end, { desc = "Neo-tree + Harpoon" })
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')

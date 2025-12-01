@@ -4,6 +4,22 @@ local M = {}
 local harpoon = require("harpoon")
 local buf
 
+local function resize_sidebar()
+	-- must be in the correct window
+	local win = vim.api.nvim_get_current_win()
+	if not win then
+		return
+	end
+
+	local harpoon = require("harpoon")
+	local count = #harpoon:list().items
+
+	-- Minimum height = 1, maximum = something reasonable (like 20)
+	local height = math.max(1, math.min(count, 20))
+
+	vim.api.nvim_win_set_height(win, height)
+end
+
 local function render()
 	if not buf or not vim.api.nvim_buf_is_valid(buf) then
 		return
@@ -43,6 +59,7 @@ function M.open()
 
 	vim.api.nvim_win_set_buf(0, buf)
 	render()
+	resize_sidebar()
 end
 
 -- Auto-refresh whenever you enter the harpoon sidebar window
@@ -50,6 +67,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function(args)
 		if buf and vim.api.nvim_buf_is_valid(buf) and args.buf == buf then
 			render()
+			resize_sidebar()
 		end
 	end,
 })

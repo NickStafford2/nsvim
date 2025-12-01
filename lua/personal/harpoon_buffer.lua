@@ -52,9 +52,9 @@ function M.open()
 
 		-- No keymaps that manipulate Harpoon or open files.
 		-- Optional: manual refresh
-		vim.keymap.set("n", "r", function()
+		vim.keymap.set("n", "<leader>hr", function()
 			render()
-		end, { buffer = buf, silent = true })
+		end, { buffer = buf, desc = "Refresh Harpoon sidebar", silent = true })
 	end
 
 	vim.api.nvim_win_set_buf(0, buf)

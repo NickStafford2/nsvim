@@ -1,12 +1,12 @@
 return {
-  "craftzdog/solarized-osaka.nvim",
-  lazy = false,          -- load early so colors & modules are available
-  priority = 1000,
-  opts = {
-    transparent = true,
-  },
-  config = function(_, opts)
-    require("solarized-osaka").setup(opts)
-    -- LazyVim will run :colorscheme solarized-osaka for us
-  end,
+	"craftzdog/solarized-osaka.nvim",
+	lazy = false, -- load immediately
+	priority = 1000, -- load before everything else
+	opts = {
+		transparent = true,
+	},
+	config = function(_, opts)
+		require("solarized-osaka").setup(opts)
+		-- LazyVim will automatically apply your colorscheme
+	end,
 }

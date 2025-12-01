@@ -1,8 +1,9 @@
 return {
 	"nvimdev/dashboard-nvim",
-	lazy = false, -- Ensure dashboard is not lazy-loaded
-	opts = function(_, opts)
-		-- Your custom logo
+	lazy = false,
+
+	opts = function()
+		-- Custom logo (can be cleaned up later)
 		local custom_logo = [[
 
       ___           ___           ___                       ___     
@@ -19,12 +20,13 @@ return {
       
     ]]
 
-		-- Ensure the logo has proper newlines for formatting
-		custom_logo = string.rep("\n", 8) .. custom_logo .. "\n\n"
+		local header = vim.split(custom_logo, "\n")
 
-		-- Override only the header (logo) part
-		opts.config.header = vim.split(custom_logo, "\n")
-
-		return opts
+		return {
+			theme = "doom",
+			config = {
+				header = header,
+			},
+		}
 	end,
 }

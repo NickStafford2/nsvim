@@ -1,56 +1,36 @@
-vim.g.python3_host_prog = vim.fn.expand("~/.pyenv/versions/neovim/bin/python")
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.mapleader = " "
+local opt = vim.opt
+local g = vim.g
 
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+-- Python provider (your clean pyenv venv)
+g.python3_host_prog = vim.fn.expand("~/.pyenv/versions/neovim/bin/python")
 
-vim.opt.number = true
+-- Disable providers you don't use
+g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
 
-vim.opt.title = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 3
-vim.opt.expandtab = true
-vim.opt.scrolloff = 20
--- vim.opt.shell = "fish"
-vim.opt.shell = "zsh"
-vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
-vim.opt.inccommand = "split"
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-vim.opt.smarttab = true
-vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.wrap = false -- No Wrap lines
-vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "cursor"
-vim.opt.mouse = ""
+-- Shell preference
+opt.shell = "zsh"
 
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- Editing preferences
+opt.number = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.smartindent = true
+opt.wrap = false
 
--- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
+-- UI behavior
+opt.scrolloff = 20
+opt.splitbelow = true
+opt.splitright = true
 
-vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
-vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
-
+-- Command behavior
 if vim.fn.has("nvim-0.8") == 1 then
-	vim.opt.cmdheight = 0
+	opt.cmdheight = 0
 end
 
--- vim.lsp.set_log_level("debug")
--- vim.g.lazyvim_python_lsp = "basedpyright"
-vim.g.lazyvim_python_lsp = "pyright"
-vim.g.lazyvim_python_ruff = "ruff"
+-- Comment continuation rules
+opt.formatoptions:append("r")
+
+-- Disable mouse if desired (LazyVim enables it by default)
+opt.mouse = ""

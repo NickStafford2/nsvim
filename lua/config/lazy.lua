@@ -50,4 +50,9 @@ require("lazy").setup({
 			},
 		},
 	},
+	-- Developer settings for plugins I am working on.
+	-- dev = {
+	-- 	path = "~/Projects/",
+	-- 	patterns = { "copy-diagnostics" },
+	-- },
 })

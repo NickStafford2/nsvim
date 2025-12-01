@@ -1,4 +1,6 @@
-vim.g.python3_host_prog = "~/.pyenv/versions/3.12.5/envs/neovim/bin/python"
+vim.g.python3_host_prog = vim.fn.expand("~/.pyenv/versions/neovim/bin/python")
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_ruby_provider = 0
 vim.g.mapleader = " "
 
 vim.opt.encoding = "utf-8"

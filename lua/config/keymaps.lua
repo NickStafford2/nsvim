@@ -1,8 +1,13 @@
 -- local discipline = require("personal.discipline")
 -- discipline.cowboy()
+-- local harpoonSidebar = require("personal.harpoonSidebar")
 
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
+
+keymap.set("n", "<leader>hl", function()
+	require("personal.harpoonSidebar").open()
+end, { desc = "Open Harpoon list buffer" })
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')

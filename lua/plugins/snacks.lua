@@ -1,6 +1,7 @@
 return {
-  "snacks.nvim",
-  opts = {
-    scroll = { enabled = false },
-  },
+	"snacks.nvim",
+	opts = {
+		dashboard = { enabled = false },
+		scroll = { enabled = false },
+	},
 }

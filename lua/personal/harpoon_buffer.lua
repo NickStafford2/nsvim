@@ -2,6 +2,7 @@
 local M = {}
 
 local harpoon = require("harpoon")
+
 local buf
 
 local function render()
@@ -39,4 +40,26 @@ function M.open()
 	render()
 end
 
+-- monkey-patch Harpoon list to refresh buffer whenever items change
+local list = harpoon:list()
+
+-- Save original methods
+local orig_add = list.add
+local orig_remove_at = list.remove_at
+
+-- Wrap the "add" method
+function list:add(...)
+	orig_add(self, ...)
+	if vim.api.nvim_buf_is_valid(buf) then
+		render()
+	end
+end
+
+-- Wrap the "remove_at" method
+function list:remove_at(...)
+	orig_remove_at(self, ...)
+	if vim.api.nvim_buf_is_valid(buf) then
+		render()
+	end
+end
 return M

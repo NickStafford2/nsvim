@@ -2,64 +2,56 @@
 local M = {}
 
 local harpoon = require("harpoon")
-
 local buf
 
 local function render()
+	if not buf or not vim.api.nvim_buf_is_valid(buf) then
+		return
+	end
+
 	local list = harpoon:list()
 	local lines = {}
 
 	for i, item in ipairs(list.items) do
-		table.insert(lines, string.format("%d: %s", i, item.value))
+		local name = vim.fn.fnamemodify(item.value, ":t")
+		table.insert(lines, string.format("%d  %s", i, name))
 	end
 
+	vim.bo[buf].modifiable = true
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+	vim.bo[buf].modifiable = false
 end
 
+M.render = render
+
 function M.open()
-	-- create buffer if needed
 	if not buf or not vim.api.nvim_buf_is_valid(buf) then
-		buf = vim.api.nvim_create_buf(false, true)
+		buf = vim.api.nvim_create_buf(false, false)
 		vim.bo[buf].buftype = "nofile"
-		vim.bo[buf].bufhidden = "wipe"
+		vim.bo[buf].bufhidden = "hide"
 		vim.bo[buf].swapfile = false
 		vim.bo[buf].filetype = "harpoonlist"
+		vim.bo[buf].modifiable = false
+		vim.bo[buf].readonly = true
 
-		-- mappings inside the Harpoon buffer
-		vim.keymap.set("n", "<CR>", function()
-			local line = vim.api.nvim_win_get_cursor(0)[1]
-			harpoon:list():select(line)
-		end, { buffer = buf, nowait = true, silent = true })
-
-		vim.keymap.set("n", "r", render, { buffer = buf, nowait = true, silent = true })
-		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = buf, silent = true })
+		-- No keymaps that manipulate Harpoon or open files.
+		-- Optional: manual refresh
+		vim.keymap.set("n", "r", function()
+			render()
+		end, { buffer = buf, silent = true })
 	end
 
-	-- use current window; neotree_harpoon already created the split
 	vim.api.nvim_win_set_buf(0, buf)
 	render()
 end
 
--- monkey-patch Harpoon list to refresh buffer whenever items change
-local list = harpoon:list()
+-- Auto-refresh whenever you enter the harpoon sidebar window
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function(args)
+		if buf and vim.api.nvim_buf_is_valid(buf) and args.buf == buf then
+			render()
+		end
+	end,
+})
 
--- Save original methods
-local orig_add = list.add
-local orig_remove_at = list.remove_at
-
--- Wrap the "add" method
-function list:add(...)
-	orig_add(self, ...)
-	if vim.api.nvim_buf_is_valid(buf) then
-		render()
-	end
-end
-
--- Wrap the "remove_at" method
-function list:remove_at(...)
-	orig_remove_at(self, ...)
-	if vim.api.nvim_buf_is_valid(buf) then
-		render()
-	end
-end
 return M

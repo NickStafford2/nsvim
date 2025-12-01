@@ -54,6 +54,7 @@ function M.open()
 	if not buf or not vim.api.nvim_buf_is_valid(buf) then
 		buf = vim.api.nvim_create_buf(false, false)
 		vim.bo[buf].buftype = "nofile"
+		vim.bo[buf].buflisted = false -- sidebar should not be treated as a file buffer
 		vim.bo[buf].bufhidden = "hide"
 		vim.bo[buf].swapfile = false
 		vim.bo[buf].filetype = "harpoonlist"

@@ -9,6 +9,10 @@ keymap.set("n", "<leader>hl", function()
 	require("personal.harpoonSidebar").open()
 end, { desc = "Open Harpoon list buffer" })
 
+vim.keymap.set("n", "<leader>e", function()
+	require("personal.neotree_harpoon").open_with_harpoon()
+end, { desc = "Neo-tree + Harpoon Pane" })
+
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')
 keymap.set("n", "<Leader>p", '"0p')

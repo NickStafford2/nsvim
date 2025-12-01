@@ -10,9 +10,10 @@ vim.keymap.set("n", "<leader>hl", function()
 	require("personal.harpoon_buffer").open()
 end, { desc = "Harpoon list" })
 
+-- lua/config/keymaps.lua
 vim.keymap.set("n", "<leader>e", function()
-	require("personal.neotree_harpoon").open_with_harpoon()
-end, { desc = "Neo-tree + Harpoon" })
+	require("personal.neotree_harpoon").toggle()
+end, { desc = "Neo-tree + Harpoon sidebar" })
 
 -- Do things without affecting the registers
 keymap.set("n", "x", '"_x')

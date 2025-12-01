@@ -25,7 +25,7 @@ echo "=== Directory Tree ===" >>"$OUTPUT"
 # Build exclusion args for tree
 EXCLUDE_ARGS=()
 for p in $IGNORES; do
-	EXCLUDE_ARGS+=(-I "$p")
+  EXCLUDE_ARGS+=(-I "$p")
 done
 
 # Always ignore .git/
@@ -38,39 +38,40 @@ echo "" >>"$OUTPUT"
 # 2. Important Entry Files
 ###############################
 FILES_TO_DUMP=(
-	"init.lua"
-	"lua/config/lazy.lua"
-	"lua/config/options.lua"
-	"lua/config/keymaps.lua"
+  "init.lua"
+  "lua/config/lazy.lua"
+  "lua/config/options.lua"
+  "lua/config/keymaps.lua"
+  "lazyvim.json"
 )
 
 echo "=== Important Config Files ===" >>"$OUTPUT"
 
 for FILE in "${FILES_TO_DUMP[@]}"; do
-	FULL="$NVIM_CONFIG/$FILE"
-	if [[ -f "$FULL" ]]; then
-		echo "--- $FILE ---" >>"$OUTPUT"
-		cat "$FULL" >>"$OUTPUT"
-		echo "" >>"$OUTPUT"
-	fi
+  FULL="$NVIM_CONFIG/$FILE"
+  if [[ -f "$FULL" ]]; then
+    echo "--- $FILE ---" >>"$OUTPUT"
+    cat "$FULL" >>"$OUTPUT"
+    echo "" >>"$OUTPUT"
+  fi
 done
 
-# ###############################
-# # 3. Dump All Plugin Files
-# ###############################
-# echo "=== Plugin Files (lua/plugins/*.lua) ===" >> "$OUTPUT"
-#
-# PLUGIN_DIR="$NVIM_CONFIG/lua/plugins"
-#
-# if [[ -d "$PLUGIN_DIR" ]]; then
-#   for p in "$PLUGIN_DIR"/*.lua; do
-#     echo "--- lua/plugins/$(basename "$p") ---" >> "$OUTPUT"
-#     cat "$p" >> "$OUTPUT"
-#     echo "" >> "$OUTPUT"
-#   done
-# else
-#   echo "(No plugin directory found)" >> "$OUTPUT"
-# fi
+###############################
+# 3. Dump All Plugin Files
+###############################
+echo "=== Plugin Files (lua/plugins/*.lua) ===" >>"$OUTPUT"
+
+PLUGIN_DIR="$NVIM_CONFIG/lua/plugins"
+
+if [[ -d "$PLUGIN_DIR" ]]; then
+  for p in "$PLUGIN_DIR"/*.lua; do
+    echo "--- lua/plugins/$(basename "$p") ---" >>"$OUTPUT"
+    cat "$p" >>"$OUTPUT"
+    echo "" >>"$OUTPUT"
+  done
+else
+  echo "(No plugin directory found)" >>"$OUTPUT"
+fi
 
 ###############################
 # Done

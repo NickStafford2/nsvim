@@ -52,12 +52,18 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 			end
 		end
 
-		-- We are currently in the neo-tree window here
+		-- Save the Neo-tree window (active right now)
+		local neotree_win = vim.api.nvim_get_current_win()
+
+		-- Create the split BELOW Neo-tree
 		vim.cmd("belowright split")
 		vim.cmd("resize 15")
 
-		-- Put your Harpoon buffer in the new split
+		-- Open Harpoon buffer in *this* new window
 		require("personal.harpoon_buffer").open()
+
+		-- 🚨 IMPORTANT: restore focus to Neo-tree window
+		vim.api.nvim_set_current_win(neotree_win)
 	end,
 })
 

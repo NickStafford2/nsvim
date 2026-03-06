@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 		vim.cmd("resize 15")
 
 		-- Open Harpoon buffer in *this* new window
-		require("personal.harpoon_buffer").open()
+		require("unused.harpoon_buffer").open()
 
 		-- 🚨 IMPORTANT: restore focus to Neo-tree window
 		vim.api.nvim_set_current_win(neotree_win)

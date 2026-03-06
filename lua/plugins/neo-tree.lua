@@ -1,40 +1,40 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	opts = function(_, opts)
-		-----------------------------------------------------------------------
-		-- 1. Ensure open_files_do_not_replace_types includes "harpoonlist"
-		-----------------------------------------------------------------------
-		-- If Neo-tree does not already have this field, default it
-		opts.open_files_do_not_replace_types = opts.open_files_do_not_replace_types or { "terminal", "qf", "trouble" }
-
-		-- Add harpoonlist if not present
-		if not vim.tbl_contains(opts.open_files_do_not_replace_types, "harpoonlist") then
-			table.insert(opts.open_files_do_not_replace_types, "harpoonlist")
-		end
-
-		-----------------------------------------------------------------------
-		-- 2. Preserve and extend event handlers
-		-----------------------------------------------------------------------
-		opts.event_handlers = opts.event_handlers or {}
-
-		-- Enable numbers when Neo-tree is focused
-		table.insert(opts.event_handlers, {
-			event = "neo_tree_buffer_enter",
-			handler = function()
-				vim.opt_local.number = true
-				vim.opt_local.relativenumber = true
-			end,
-		})
-
-		-- Disable numbers when Neo-tree loses focus
-		table.insert(opts.event_handlers, {
-			event = "neo_tree_buffer_leave",
-			handler = function()
-				vim.opt_local.number = false
-				vim.opt_local.relativenumber = false
-			end,
-		})
-
-		return opts
-	end,
+	-- opts = function(_, opts)
+	-- 	-----------------------------------------------------------------------
+	-- 	-- 1. Ensure open_files_do_not_replace_types includes "harpoonlist"
+	-- 	-----------------------------------------------------------------------
+	-- 	-- If Neo-tree does not already have this field, default it
+	-- 	opts.open_files_do_not_replace_types = opts.open_files_do_not_replace_types or { "terminal", "qf", "trouble" }
+	--
+	-- 	-- Add harpoonlist if not present
+	-- 	if not vim.tbl_contains(opts.open_files_do_not_replace_types, "harpoonlist") then
+	-- 		table.insert(opts.open_files_do_not_replace_types, "harpoonlist")
+	-- 	end
+	--
+	-- 	-----------------------------------------------------------------------
+	-- 	-- 2. Preserve and extend event handlers
+	-- 	-----------------------------------------------------------------------
+	-- 	opts.event_handlers = opts.event_handlers or {}
+	--
+	-- 	-- Enable numbers when Neo-tree is focused
+	-- 	table.insert(opts.event_handlers, {
+	-- 		event = "neo_tree_buffer_enter",
+	-- 		handler = function()
+	-- 			vim.opt_local.number = true
+	-- 			vim.opt_local.relativenumber = true
+	-- 		end,
+	-- 	})
+	--
+	-- 	-- Disable numbers when Neo-tree loses focus
+	-- 	table.insert(opts.event_handlers, {
+	-- 		event = "neo_tree_buffer_leave",
+	-- 		handler = function()
+	-- 			vim.opt_local.number = false
+	-- 			vim.opt_local.relativenumber = false
+	-- 		end,
+	-- 	})
+	--
+	-- 	return opts
+	-- end,
 }
